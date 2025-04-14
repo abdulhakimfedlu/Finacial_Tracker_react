@@ -1,11 +1,9 @@
 import React from 'react';
-import './index.css'; // Ensure Tailwind is imported
+import './index.css';
 
 function App() {
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-500">Hello, World!</h1>
-      {/* Add your Tailwind CSS classes here */}
+    <div className="text-4xl text-green-600 font-bold">
       Tailwind CSS is Working!
     </div>
   );
