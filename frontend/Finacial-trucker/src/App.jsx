@@ -15,16 +15,31 @@ import Income from './pages/Dashboard/Income'; // Income page
 import Expense from './pages/Dashboard/Expense'; // Expense page
 
 function App() {
+  // Check if user is authenticated
+  const isAuthenticated = !!localStorage.getItem("token");
+
   return (
     <Router>
       <div className="min-h-screen bg-gray-100"> 
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route 
+            path="/" 
+            element={isAuthenticated ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} 
+          />
           <Route path="/login" element={<Login />} />
-          <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/Dashboard" element={<DashboardHome />} />
-          <Route path="/income" element={<Income />} />
-          <Route path="/Expense" element={<Expense />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route 
+            path="/dashboard" 
+            element={isAuthenticated ? <DashboardHome /> : <Navigate to="/login" />} 
+          />
+          <Route 
+            path="/income" 
+            element={isAuthenticated ? <Income /> : <Navigate to="/login" />} 
+          />
+          <Route 
+            path="/expense" 
+            element={isAuthenticated ? <Expense /> : <Navigate to="/login" />} 
+          />
         </Routes>
       </div>
     </Router>
@@ -32,13 +47,3 @@ function App() {
 }
 
 export default App;
-const root=()=>{
-  //checks if token exists in local storage
-  const isAuthenticated = !!localStorage.getItem("token");
-  //redirects to dashboard if not authenticated
-  return isAuthenticated ? (
-    <Navigate to ="/Dashboard" />
-  ) : (
-    <Navigate to ="/login" />
-  );
-}

@@ -2,16 +2,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@theme{
-  --diplay-font: 'Poppins', sans-serif;
+
+:root {
+  --display-font: 'Poppins', sans-serif;
   --color-primary: #875cf5;
 }
+
 @layer base{
   html {
-    font-family:var(--display-font);
+    font-family: var(--display-font);
   }
   body {
-    overflow:hidden;
     background-color: #f3f4f6;
+    margin: 0;
+    padding: 0;
   }
+}
+
+/* Ensure AuthLayout background image works */
+.bg-auth-bg {
+  background-image: url('../assets/images/auth-bg.png');
 }
